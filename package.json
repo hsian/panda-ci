@@ -18,5 +18,8 @@
     "enzyme": "^3.4.1",
     "jest": "^23.5.0",
     "react-scripts": "^1.1.4"
+  },
+  "jest": {
+    "collectCoverage": "true"
   }
 }
