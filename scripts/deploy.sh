@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "111111111111111111111111111"
+
 set -e # exit with nonzero exit code if anything fails
 
 if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
@@ -15,7 +17,7 @@ git config --global user.email "407775611@qq.com"
 git config --global user.name "hsian"
 
 #using token clone gh-pages branch
-git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/${GH_USER}/${GH_REPO}.git gh-pages > /dev/null
+git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/${GH_USER}/${GH_REF}.git gh-pages > /dev/null
 
 #go into directory and copy data we're interested in to that directory
 cd gh-pages
