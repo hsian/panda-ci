@@ -11,8 +11,8 @@ cp -R ${DIST} $HOME/${DIST}
 
 #go to home and setup git
 cd $HOME
-git config --global user.email "407775611@qq.com"
-git config --global user.name "hsian"
+git config --global user.email "${EMAIL}"
+git config --global user.name "${GH_USER}"
 
 #using token clone gh-pages branch
 git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/${GH_USER}/${GH_REF}.git gh-pages > /dev/null
