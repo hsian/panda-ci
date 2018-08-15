@@ -2,7 +2,7 @@
 
 echo "111111111111111111111111111"
 
-set -e # exit with nonzero exit code if anything fails
+#set -e # exit with nonzero exit code if anything fails
 
 if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
 
