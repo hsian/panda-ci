@@ -11,15 +11,26 @@ before_script:
   - git clone --branch gh-pages https://${GH_REF} build
 
 script:
+  - npm run build
   - npm test
 
-after_success:
-  - npm run build
-  - cd build
-  - cp index.html
-  - git add --all .
-  - git commit --message "Automatically update from travis-ci"
-  - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages
+# after_success:
+#   - npm run build
+#   - cd build
+#   - cp index.html
+#   - git add --all .
+#   - git commit --message "Automatically update from travis-ci"
+#   - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages
+#   
+deploy:
+  provider: pages
+  local-dir: build
+  skip-cleanup: true
+  github-token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: master
+
 
 env:
   global:
