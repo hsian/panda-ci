@@ -1,15 +1,13 @@
 #!/bin/bash
 
-echo "111111111111111111111111111"
-
-#set -e # exit with nonzero exit code if anything fails
+set -e # exit with nonzero exit code if anything fails
 
 if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
 
 echo "Starting to update gh-pages\n"
 
 #copy data we're interested in to other place
-cp -R build $HOME/build
+cp -R ${DIST} $HOME/${DIST}
 
 #go to home and setup git
 cd $HOME
@@ -21,7 +19,7 @@ git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/${GH_USER}/${
 
 #go into directory and copy data we're interested in to that directory
 cd gh-pages
-cp -Rf $HOME/build/* .
+cp -Rf $HOME/${DIST}/* .
 
 echo "Allow files with underscore https://help.github.com/articles/files-that-start-with-an-underscore-are-missing/" > .nojekyll
 

@@ -27,3 +27,4 @@ env:
   global:
     - GH_USER: hsian
     - GH_REF: panda-ci
+    - DIST: build
