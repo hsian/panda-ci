@@ -5,33 +5,25 @@ sudo: false
 node_js:
   - "8"
 
-before_script:
-  - git config --global user.name "hsian"
-  - git config --global user.email "407775611@qq.com"
-  - git clone --branch gh-pages https://${GH_REF} build
+cache:
+  directories:
+    - node_modules
+
+branches:
+  only:
+    - master
+
+notifications:
+  email: false
 
 script:
   - npm run build
   - npm test
-
-# after_success:
-#   - npm run build
-#   - cd build
-#   - cp index.html
-#   - git add --all .
-#   - git commit --message "Automatically update from travis-ci"
-#   - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages
-#   
-deploy:
-  provider: pages
-  local-dir: build
-  skip-cleanup: true
-  github-token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  on:
-    branch: master
-
+  
+after_success:
+  - bash ./scripts/deploy.sh
 
 env:
   global:
-    - GH_REF: github.com/hsian/panda-ci.git
+    - GH_USER: hsian
+    - GH_REF: panda-ci
