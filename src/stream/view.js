@@ -38,7 +38,7 @@ class Subscribe extends Component{
 	// }
 
 	componentDidMount(){
-		const {service} = this.props;
+		//const {service} = this.props;
 
 		// service.user().subscribe(res => {
 		// 	this.setState({ user: res })
@@ -78,7 +78,7 @@ function inject(Root, serviceArray = []){
 
 					let {store} = this.state;
 
-					Object.keys(store).map(item => {
+					Object.keys(store).forEach(item => {
 						const payload = store[item];
 
 						if(res.name === payload.name){
